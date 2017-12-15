@@ -56,8 +56,20 @@ public:
 		_stateMachine = stateMachine;
 	}
 
+	const std::string & getStateName() const
+	{
+		return _name;
+	}
+
+	State(const std::string &name)
+	{
+		_stateMachine = nullptr;
+		_name = name;
+	}
+
 	virtual ~State() {};
 protected:
 	StateMachine* _stateMachine;
+	std::string _name;
 };
 #endif /* state_h */

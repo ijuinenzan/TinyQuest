@@ -3,6 +3,7 @@
 namespace Tiny
 {
 	TinyMoveRightState::TinyMoveRightState(Tiny* tiny)
+		:State("Tiny Move Right")
 	{
 		_tiny = tiny;
 	}
@@ -13,7 +14,7 @@ namespace Tiny
 
 	void TinyMoveRightState::didEnterWithPreviousState(State* previousState)
 	{
-		_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(0, 0));
+		_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(100, 0));
 	}
 
 	void TinyMoveRightState::updateWithDeltaTime(const float delta)

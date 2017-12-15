@@ -25,7 +25,7 @@ bool HelloWorld::init()
         return false;
     }
 
-	auto testMap = TMXTiledMap::create("Maps/Test/TestMap.tmx");
+	auto testMap = TMXTiledMap::create("Maps/Test/Map0.tmx");
 	this->addChild(testMap, 0);
 
 	auto characters = testMap->getObjectGroup("CharacterLayer");
@@ -35,19 +35,20 @@ bool HelloWorld::init()
 	spriteTiny->setPosition(player.at("x").asFloat(), player.at("y").asFloat());
 	this->addChild(spriteTiny,1);
 
-	auto grounds = testMap->getObjectGroup("GroundLayer");
-	for(auto ground: grounds->getObjects())
-	{
-		auto valueVector = ground.asValueMap();
-		auto bodyGround = cocos2d::PhysicsBody::createBox(cocos2d::Size(valueVector.at("width").asFloat(), valueVector.at("height").asFloat()), cocos2d::PHYSICSBODY_MATERIAL_DEFAULT);
+	const auto grounds = testMap->getObjectGroup("GroundLayer");
+	auto ground = grounds->getObject("Ground0");
+	auto bodyGround = cocos2d::PhysicsBody::createBox(cocos2d::Size(158, 509), cocos2d::PHYSICSBODY_MATERIAL_DEFAULT);
 
-		bodyGround->getShape(0)->setRestitution(1.0f);
-		bodyGround->getShape(0)->setFriction(0.0f);
-		bodyGround->getShape(0)->setDensity(1.0f);
-		bodyGround->setDynamic(false);
+	bodyGround->getShape(0)->setRestitution(1.0f);
+	bodyGround->getShape(0)->setFriction(0.0f);
+	bodyGround->getShape(0)->setDensity(1.0f);
+	bodyGround->setDynamic(false);
 
-	}
+	auto groundNode = Node::create();
+	groundNode->setPhysicsBody(bodyGround);
+	groundNode->setPosition(1 + 158/2, 499 - 509/2);
 
+	this->addChild(groundNode);
 
     return true;
 }

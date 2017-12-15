@@ -39,6 +39,7 @@ namespace Tiny
 		bodyTiny->getShape(0)->setRestitution(1.0f);
 		bodyTiny->getShape(0)->setFriction(0.0f);
 		bodyTiny->getShape(0)->setDensity(1.0f);
+		bodyTiny->setRotationEnable(false);
 		bodyTiny->setDynamic(true);
 
 		this->setPhysicsBody(bodyTiny);
@@ -48,6 +49,11 @@ namespace Tiny
 		keyboardListener->onKeyPressed = CC_CALLBACK_2(Tiny::onKeyPressed, this);
 		keyboardListener->onKeyReleased = CC_CALLBACK_2(Tiny::onKeyReleased, this);
 		_eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+
+		_stateMachine->addState<TinyIdleState>(this);
+		_stateMachine->addState<TinyMoveRightState>(this);
+
+		_stateMachine->enterState<TinyIdleState>();
 
 		return true;
 	}

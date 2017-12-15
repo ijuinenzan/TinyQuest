@@ -1,8 +1,10 @@
 ﻿#include "TinyIdleState.h"
+#include "TinyMoveRightState.h"
 
 namespace Tiny
 {
 	TinyIdleState::TinyIdleState(Tiny* tiny)
+		:State("Tiny Idle")
 	{
 		_tiny = tiny;
 	}
@@ -18,6 +20,7 @@ namespace Tiny
 
 	void TinyIdleState::updateWithDeltaTime(const float delta)
 	{
+		_stateMachine->enterState<TinyMoveRightState>();
 	}
 
 	void TinyIdleState::willExitWithNextState(State* nextState)
@@ -26,6 +29,7 @@ namespace Tiny
 
 	bool TinyIdleState::isValidNextState(State* state)
 	{
+		auto name = state->getStateName();
 		if(_tiny->isRightPressed())
 		{
 			return true;
