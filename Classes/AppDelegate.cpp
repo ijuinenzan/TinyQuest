@@ -67,6 +67,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	}
 
 	// turn on display FPS
+	//abc
 	director->setDisplayStats(true);
 
 	// set FPS. the default value is 1.0/60 if you don't call this
