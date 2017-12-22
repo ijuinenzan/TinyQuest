@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="9">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="17">
  <tileset firstgid="1" source="tiset.tsx"/>
  <layer name="BackgroundLayer" width="30" height="20">
   <data encoding="csv">
@@ -50,13 +50,18 @@
 </data>
  </layer>
  <objectgroup name="GroundObject">
-  <object id="2" x="0" y="384">
-   <polygon points="0,0 1.33333,253.333 958.667,254.667 958.667,0 832,1.33333 833.333,-29.3333 673.333,-30.6667 672,32 480,32 481.333,-30.6667 381.333,-32 384,0"/>
-  </object>
   <object id="3" x="541.333" y="353.333" width="66.6667" height="28"/>
+  <object id="9" x="1" y="384" width="384" height="256"/>
+  <object id="10" x="384" y="351" width="96" height="289"/>
+  <object id="11" x="482" y="416" width="191" height="225"/>
+  <object id="12" x="673" y="354" width="155" height="289"/>
+  <object id="13" x="827" y="385" width="132" height="254"/>
  </objectgroup>
  <objectgroup name="TrapObject">
   <object id="6" x="484" y="397.333" width="188" height="17.3333"/>
+ </objectgroup>
+ <objectgroup name="PlayerObject">
+  <object id="14" name="Player" x="6" y="354" width="24" height="28"/>
  </objectgroup>
  <objectgroup name="NextLevelObject">
   <object id="8" x="953.333" y="1.33333" width="4" height="381.333"/>
