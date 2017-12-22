@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "characters/tiny/Tiny.h"
+#include "Define.h"
 
 USING_NS_CC;
 
@@ -7,7 +8,7 @@ Scene* HelloWorld::createScene()
 {
 	auto helloWorldScene = Scene::createWithPhysics();
 	helloWorldScene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	helloWorldScene->getPhysicsWorld()->setGravity(Vect(0.f, -10.f));
+	helloWorldScene->getPhysicsWorld()->setGravity(GRAVITY);
 
 	const auto layer = HelloWorld::create();
 	helloWorldScene->addChild(layer);
@@ -40,6 +41,7 @@ bool HelloWorld::init()
 	for(auto ground: grounds->getObjects())
 	{
 		auto groundNode = Node::create();
+		groundNode->setTag(GROUND_TAG);
 
 		auto groundValues = ground.asValueMap();
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="5">
- <tileset firstgid="1" source="tiset.tsx"/>
+ <tileset firstgid="1" source="map/tiset.tsx"/>
  <layer name="GroundLayer" width="30" height="20">
   <data encoding="csv">
 44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,
