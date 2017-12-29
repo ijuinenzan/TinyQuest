@@ -1,7 +1,7 @@
-﻿#ifndef __Tiny_H__
-#define __Tiny_H__
+﻿#ifndef __TINY_H__
+#define __TINY_H__
 
-#include "actors/Actor.h"
+#include "../Actor.h"
 
 namespace Tiny
 {
@@ -26,4 +26,4 @@ namespace Tiny
 }
 
 
-#endif //!__Tiny_H__
+#endif //!__TINY_H__

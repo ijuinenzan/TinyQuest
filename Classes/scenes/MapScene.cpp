@@ -1,22 +1,27 @@
-#include "HelloWorldScene.h"
+#include "MapScene.h"
 #include "characters/tiny/Tiny.h"
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* MapScene::createScene(const std::string& mapResourceName)
 {
-	auto helloWorldScene = Scene::createWithPhysics();
-	helloWorldScene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	helloWorldScene->getPhysicsWorld()->setGravity(Vect(0.f, -10.f));
+	auto pRet = new(std::nothrow) MapScene(); 
+	if (pRet && pRet->init(mapResourceName))
+	{ 
+		pRet->autorelease(); 
+		auto helloWorldScene = createWithPhysics();
+		helloWorldScene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+		helloWorldScene->getPhysicsWorld()->setGravity(Vect(0.f, -10.f));
 
-	const auto layer = HelloWorld::create();
-	helloWorldScene->addChild(layer);
-
-    return helloWorldScene;
+		helloWorldScene->addChild(pRet);
+		return helloWorldScene;
+	}
+	delete pRet;
+	return nullptr;
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool MapScene::init(const std::string& mapResourceName)
 {
     //////////////////////////////
     // 1. super init first
@@ -25,22 +30,22 @@ bool HelloWorld::init()
         return false;
     }
 
-	const auto testMap = TMXTiledMap::create("Maps/Level1.tmx");
-	this->addChild(testMap, 0);
+	const auto map = TMXTiledMap::create(mapResourceName);
+	this->addChild(map, 0);
 
-	const auto characters = testMap->getObjectGroup("PlayerObject");
+	const auto characters = map->getObjectGroup("PlayerObject");
 	auto player = characters->getObject("Player");
 
 	auto spriteTiny = Tiny::Tiny::create();
 	spriteTiny->setPosition(player.at("x").asFloat(), player.at("y").asFloat());
 	this->addChild(spriteTiny,1);
 
-	const auto grounds = testMap->getObjectGroup("GroundObject");
+	const auto grounds = map->getObjectGroup("GroundObject");
 
 	for(auto ground: grounds->getObjects())
 	{
 		auto groundNode = Node::create();
-
+		 
 		auto groundValues = ground.asValueMap();
 
 		auto bodyGround = PhysicsBody::createBox(Size(groundValues.at("width").asFloat(), groundValues.at("height").asFloat()), PHYSICSBODY_MATERIAL_DEFAULT);
