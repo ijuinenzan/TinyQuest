@@ -17,9 +17,14 @@ namespace Tiny
 
 		bool isLeftPressed() const;
 		bool isRightPressed() const;
+		bool isSpacePressed() const;
+		bool isTouchingGround() const;
 	private:
 		bool _isLeftPressed;
 		bool _isRightPressed;
+		bool _isSpacePressed;
+
+		bool _isTouchingGround;
 		void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 		void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	};

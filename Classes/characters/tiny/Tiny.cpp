@@ -2,6 +2,11 @@
 #include "TinyAnimations.hpp"
 #include "TinyIdleState.h"
 #include "TinyMoveRightState.h"
+#include "TinyMoveLeftState.h"
+#include "TinyJumpRightState.h"
+
+#include "Define.h"
+
 
 namespace Tiny
 {
@@ -18,7 +23,7 @@ namespace Tiny
 	}
 
 	Tiny::Tiny()
-		:_isLeftPressed(false), _isRightPressed(false)
+		:_isLeftPressed(false), _isRightPressed(false), _isSpacePressed(false)
 	{
 	}
 
@@ -33,7 +38,7 @@ namespace Tiny
 		{
 			return false;
 		}
-
+		this->setTag(TINY_TAG);
 		auto bodyTiny = cocos2d::PhysicsBody::createBox(cocos2d::Size(24, 28), cocos2d::PHYSICSBODY_MATERIAL_DEFAULT);
 
 		bodyTiny->getShape(0)->setRestitution(1.0f);
@@ -41,6 +46,32 @@ namespace Tiny
 		bodyTiny->getShape(0)->setDensity(1.0f);
 		bodyTiny->setRotationEnable(false);
 		bodyTiny->setDynamic(true);
+
+		auto contactListener = cocos2d::EventListenerPhysicsContact::create();
+		contactListener->onContactBegin = [=](cocos2d::PhysicsContact& contact) {
+			auto a = contact.getShapeA()->getBody()->getNode();
+			auto b = contact.getShapeB()->getBody()->getNode();
+
+			if (a->getTag() == TINY_TAG && b->getTag() == GROUND_TAG
+				|| b->getTag() == TINY_TAG && a->getTag() == GROUND_TAG)
+			{
+				_isTouchingGround = true;
+			}
+
+			return true;
+		};
+
+		contactListener->onContactSeparate = [=](cocos2d::PhysicsContact& contact) {
+			auto a = contact.getShapeA()->getBody()->getNode();
+			auto b = contact.getShapeB()->getBody()->getNode();
+
+			if (a->getTag() == TINY_TAG && b->getTag() == GROUND_TAG
+				|| b->getTag() == TINY_TAG && a->getTag() == GROUND_TAG)
+			{
+				_isTouchingGround = false;
+			}
+		};
+
 
 		this->setPhysicsBody(bodyTiny);
 		bodyTiny->setContactTestBitmask(0x000001);
@@ -52,8 +83,11 @@ namespace Tiny
 
 		_stateMachine->addState<TinyIdleState>(this);
 		_stateMachine->addState<TinyMoveRightState>(this);
-
+		_stateMachine->addState<TinyMoveLeftState>(this);
+		_stateMachine->addState<TinyJumpRightState>(this);
 		_stateMachine->enterState<TinyIdleState>();
+
+		_eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
 		return true;
 	}
@@ -68,6 +102,17 @@ namespace Tiny
 		return _isRightPressed;
 	}
 
+	bool Tiny::isSpacePressed() const
+	{
+		return _isSpacePressed;
+	}
+
+	bool Tiny::isTouchingGround() const
+	{
+		
+		return _isTouchingGround;
+	}
+
 	void Tiny::onKeyPressed(const cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event)
 	{
 		if(keyCode == cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW)
@@ -78,6 +123,9 @@ namespace Tiny
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 		{
 			_isRightPressed = true;
+		}
+		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_SPACE) {
+			_isSpacePressed = true;
 		}
 	}
 
@@ -91,6 +139,9 @@ namespace Tiny
 		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 		{
 			_isRightPressed = false;
+		}
+		if (keyCode == cocos2d::EventKeyboard::KeyCode::KEY_SPACE) {
+			_isSpacePressed = false;
 		}
 	}
 }
