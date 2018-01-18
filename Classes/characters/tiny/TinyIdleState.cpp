@@ -1,5 +1,8 @@
 ﻿#include "TinyIdleState.h"
 #include "TinyMoveRightState.h"
+#include "TinyMoveLeftState.h"
+#include "TinyAnimations.hpp"
+#include "TinyJumpState.h"
 
 namespace Tiny
 {
@@ -16,11 +19,23 @@ namespace Tiny
 	void TinyIdleState::didEnterWithPreviousState(State* previousState)
 	{
 		_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(0, 0));
+		_tiny->stopActionByTag(0);
 	}
 
 	void TinyIdleState::updateWithDeltaTime(const float delta)
 	{
-		_stateMachine->enterState<TinyMoveRightState>();
+		if(_stateMachine->enterState<TinyMoveRightState>())
+		{
+			return;
+		}
+		if (_stateMachine->enterState<TinyMoveLeftState>())
+		{
+			return;
+		}
+		if (_stateMachine->enterState<TinyJumpState>())
+		{
+			return;
+		}
 	}
 
 	void TinyIdleState::willExitWithNextState(State* nextState)
@@ -29,10 +44,27 @@ namespace Tiny
 
 	bool TinyIdleState::isValidNextState(State* state)
 	{
-		auto name = state->getStateName();
-		if(_tiny->isRightPressed())
+		const auto name = state->getStateName();
+		if(name == "Tiny Move Right")
 		{
-			return true;
+			if (_tiny->isRightPressed())
+			{
+				return true;
+			}
+		}
+		if(name == "Tiny Move Left")
+		{
+			if(_tiny->isLeftPressed())
+			{
+				return true;
+			}
+		}
+		if (name == "Tiny Jump") 
+		{
+			if (_tiny->isSpacePressed()) 
+			{
+				return true;
+			}
 		}
 		return false;
 	}

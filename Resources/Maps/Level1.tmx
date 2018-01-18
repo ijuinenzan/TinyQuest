@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="9">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="19">
  <tileset firstgid="1" source="tiset.tsx"/>
  <layer name="BackgroundLayer" width="30" height="20">
   <data encoding="csv">
@@ -14,7 +14,7 @@
 44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,
 44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,
 44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,
-44,44,44,44,44,44,44,44,44,44,44,44,101,99,100,44,44,44,44,44,44,101,99,99,99,100,44,44,44,44,
+44,44,44,44,44,44,44,44,44,44,44,44,101,99,100,44,44,45,44,44,44,101,99,99,99,100,44,44,44,44,
 99,99,99,99,99,99,99,99,99,99,99,99,103,88,113,44,44,44,44,44,44,97,88,89,88,102,99,99,99,99,
 88,88,88,88,88,88,88,88,88,88,88,88,88,88,102,99,99,99,99,99,99,103,88,88,88,88,88,89,88,88,
 88,88,88,88,88,117,88,88,88,88,88,88,117,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,
@@ -38,7 +38,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,0,
 0,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,0,
 0,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,0,123,0,0,0,0,0,
-0,0,0,13,0,0,0,0,0,0,0,38,0,0,0,0,0,58,58,0,0,0,0,0,0,0,0,0,0,36,
+0,0,0,13,0,0,0,0,0,0,0,38,0,0,0,0,0,44,44,44,0,0,0,0,0,0,0,0,0,36,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,228,228,228,228,228,228,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -50,15 +50,39 @@
 </data>
  </layer>
  <objectgroup name="GroundObject">
-  <object id="2" x="0" y="384">
-   <polygon points="0,0 1.33333,253.333 958.667,254.667 958.667,0 832,1.33333 833.333,-29.3333 673.333,-30.6667 672,32 480,32 481.333,-30.6667 381.333,-32 384,0"/>
-  </object>
-  <object id="3" x="541.333" y="353.333" width="66.6667" height="28"/>
+  <object id="9" x="-1" y="384" width="382" height="272"/>
+  <object id="10" x="386" y="351" width="91" height="286"/>
+  <object id="11" x="480" y="415" width="193" height="224"/>
+  <object id="12" x="674" y="352" width="154" height="290"/>
+  <object id="13" x="831" y="384" width="128" height="256"/>
+ </objectgroup>
+ <objectgroup name="PlayerObject">
+  <object id="14" name="Player" x="35" y="350" width="24" height="28"/>
+ </objectgroup>
+ <objectgroup name="CoinObject">
+  <object id="17" x="482" y="258" width="32" height="32"/>
+  <object id="18" x="611" y="256" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="TrapObject">
-  <object id="6" x="484" y="397.333" width="188" height="17.3333"/>
+  <object id="6" x="484" y="397.333" width="188" height="17.3333" visible="0"/>
+ </objectgroup>
+ <objectgroup name="PlatformObject">
+  <properties>
+   <property name="max_x" type="float" value="642"/>
+   <property name="min_x" type="float" value="512"/>
+  </properties>
+  <object id="15" x="542.667" y="322" width="66.6667" height="28">
+   <properties>
+    <property name="max_x" type="float" value="642"/>
+    <property name="min_x" type="float" value="512"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="NextLevelObject">
-  <object id="8" x="953.333" y="1.33333" width="4" height="381.333"/>
+  <object id="8" x="953.333" y="1.33333" width="4" height="381.333">
+   <properties>
+    <property name="NextMapName" value="Maps/Level2.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

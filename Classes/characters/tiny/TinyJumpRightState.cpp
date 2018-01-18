@@ -2,6 +2,7 @@
 #include "TinyIdleState.h"
 #include "TinyMoveLeftState.h"
 #include "TinyMoveRightState.h"
+#include "TinyAnimations.hpp"
 
 namespace Tiny
 {
@@ -17,15 +18,26 @@ namespace Tiny
 
 	void TinyJumpRightState::didEnterWithPreviousState(State* previousState)
 	{
-		_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(100, 200));
+		if (previousState->getStateName() == "Tiny Jump")
+		{
+			_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(150, _tiny->getPhysicsBody()->getVelocity().y));
+		}
+		else
+		{
+			_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(150, 350));
+		}
+		_tiny->stopActionByTag(0);
+		_tiny->runAction(TexturePacker::TinyAnimations::createJUMPRIGHT_JUMPRIGHTAnimateAction(0.3, -1));
 	}
 
 	void TinyJumpRightState::updateWithDeltaTime(const float delta)
 	{
-		if (_stateMachine->enterState<TinyIdleState>()) {
+		if (_stateMachine->enterState<TinyMoveRightState>()) 
+		{
 			return;
 		}
-		if (_stateMachine->enterState<TinyMoveRightState>()) {
+		if (_stateMachine->enterState<TinyIdleState>()) 
+		{
 			return;
 		}
 	}
@@ -37,16 +49,17 @@ namespace Tiny
 	bool TinyJumpRightState::isValidNextState(State* state)
 	{
 		auto name = state->getStateName();
-		if (name == "Tiny Idle") {
+		if (name == "Tiny Idle") 
+		{
 			if (_tiny->isTouchingGround())
 			{
 				return true;
 			}
-
-
 		}
-		if (name == "Tiny Move Right") {
-			if (_tiny->isTouchingGround()) {
+		if (name == "Tiny Move Right") 
+		{
+			if (_tiny->isTouchingGround() && _tiny->isRightPressed()) 
+			{
 				return true;
 			}
 		}

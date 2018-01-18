@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="5">
- <tileset firstgid="1" source="map/tiset.tsx"/>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="17">
+ <tileset firstgid="1" source="tiset.tsx"/>
  <layer name="GroundLayer" width="30" height="20">
   <data encoding="csv">
 44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,
@@ -50,17 +50,35 @@
 </data>
  </layer>
  <objectgroup name="GroundObject">
-  <object id="2" x="0" y="352">
-   <polygon points="0,0 96,0 96,33.3333 190.667,33.3333 192,96 732,97.3333 734.667,34.6667 956,33.3333 960,284 2.66667,286.667"/>
-  </object>
+  <object id="5" x="2" y="352" width="93" height="287"/>
+  <object id="6" x="96" y="385" width="93" height="254"/>
+  <object id="7" x="191" y="449" width="544" height="189"/>
+  <object id="8" x="737" y="383" width="222" height="256"/>
+ </objectgroup>
+ <objectgroup name="PlayerObject">
+  <object id="9" name="Player" x="36" y="320" width="24" height="28"/>
  </objectgroup>
  <objectgroup name="TrapObject">
-  <object id="3" x="192" y="417.333" width="542.667" height="33.3333"/>
+  <object id="3" x="200" y="417.333" width="522.667" height="26.3333"/>
+ </objectgroup>
+ <objectgroup name="CoinObject">
+  <object id="15" x="319" y="317" width="32" height="32"/>
+  <object id="16" x="576" y="318" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="NextLevelObject">
-  <object id="1" x="958.667" y="1.33333" width="2.66667" height="382.667"/>
+  <object id="11" x="953" y="2.8335" width="4" height="378.333">
+   <properties>
+    <property name="NextMapName" value="Maps/Level4.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="MoveObject">
-  <object id="4" x="258.667" y="384" width="61.3333" height="30.6667"/>
+ <objectgroup name="MoveObject"/>
+ <objectgroup name="PlatformObject">
+  <object id="10" x="226.333" y="381.667" width="61.3333" height="30.6667">
+   <properties>
+    <property name="max_x" type="float" value="704"/>
+    <property name="min_x" type="float" value="224"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

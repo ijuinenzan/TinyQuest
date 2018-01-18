@@ -19,8 +19,8 @@ namespace Tiny
 	void TinyMoveRightState::didEnterWithPreviousState(State* previousState)
 	{
 		_tiny->getPhysicsBody()->setVelocity(cocos2d::Vec2(100, 0));
-		//_tiny->runAction(TexturePacker::TinyAnimations::createMOVERIGHT_MOVERIGHTAnimateAction(0.7, -1));
-		_tiny->setScaleX(1);
+		_tiny->stopActionByTag(0);
+		_tiny->runAction(TexturePacker::TinyAnimations::createMOVERIGHT_MOVERIGHTAnimateAction(0.3, -1));
 	}
 
 	void TinyMoveRightState::updateWithDeltaTime(const float delta)

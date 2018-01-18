@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef __TINY_JUMP_RIGHT_STATE_H__
+#define __TINY_JUMP_RIGHT_STATE_H__
 #include "Tiny.h"
 
 namespace Tiny
@@ -19,3 +20,4 @@ namespace Tiny
 	};
 }
 
+#endif //!__TINY_JUMP_RIGHT_STATE_H__

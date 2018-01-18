@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef __TINY_MOVE_LEFT_STATE_H__
+#define __TINY_MOVE_LEFT_STATE_H__
 #include "Tiny.h"
 
 namespace Tiny
@@ -18,4 +19,6 @@ namespace Tiny
 		bool isValidNextState(State* state) override;
 	};
 }
+
+#endif //!__TINY_MOVE_LEFT_STATE_H__
 

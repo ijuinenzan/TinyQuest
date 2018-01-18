@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef __TINY_IDLE_STATE_H__
+#define __TINY_IDLE_STATE_H__
 #include "Tiny.h"
 
 namespace Tiny
@@ -18,3 +19,4 @@ namespace Tiny
 	};
 }
 
+#endif //!__TINY_IDLE_STATE_H__

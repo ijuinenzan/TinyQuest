@@ -187,23 +187,33 @@ Vector<SpriteFrame*> TinyAnimations::getMOVERIGHT_MOVERIGHTAnimationFrames()
 
 Animate *TinyAnimations::createJUMPLEFT_JUMPLEFTAnimateAction(float delay, unsigned int loops)
 {
-    return Animate::create(Animation::createWithSpriteFrames(getJUMPLEFT_JUMPLEFTAnimationFrames(), delay, loops));
+	const auto animation = Animate::create(Animation::createWithSpriteFrames(getJUMPLEFT_JUMPLEFTAnimationFrames(), delay, loops));
+	animation->setTag(0);
+	return animation;
 }
 Animate *TinyAnimations::createJUMPRIGHT_JUMPRIGHTAnimateAction(float delay, unsigned int loops)
 {
-    return Animate::create(Animation::createWithSpriteFrames(getJUMPRIGHT_JUMPRIGHTAnimationFrames(), delay, loops));
+	const auto animation = Animate::create(Animation::createWithSpriteFrames(getJUMPRIGHT_JUMPRIGHTAnimationFrames(), delay, loops));
+	animation->setTag(0);
+	return animation;
 }
 Animate *TinyAnimations::createMOVEAHEAD_MOVEAHEADAnimateAction(float delay, unsigned int loops)
 {
-    return Animate::create(Animation::createWithSpriteFrames(getMOVEAHEAD_MOVEAHEADAnimationFrames(), delay, loops));
+	const auto animation = Animate::create(Animation::createWithSpriteFrames(getMOVEAHEAD_MOVEAHEADAnimationFrames(), delay, loops));
+	animation->setTag(0);
+	return animation;
 }
 Animate *TinyAnimations::createMOVELEFT_MOVELEFTAnimateAction(float delay, unsigned int loops)
 {
-    return Animate::create(Animation::createWithSpriteFrames(getMOVELEFT_MOVELEFTAnimationFrames(), delay, loops));
+	const auto animation = Animate::create(Animation::createWithSpriteFrames(getMOVELEFT_MOVELEFTAnimationFrames(), delay, loops));
+	animation->setTag(0);
+	return animation;
 }
 Animate *TinyAnimations::createMOVERIGHT_MOVERIGHTAnimateAction(float delay, unsigned int loops)
 {
-    return Animate::create(Animation::createWithSpriteFrames(getMOVERIGHT_MOVERIGHTAnimationFrames(), delay, loops));
+	const auto animation = Animate::create(Animation::createWithSpriteFrames(getMOVERIGHT_MOVERIGHTAnimationFrames(), delay, loops));
+	animation->setTag(0);
+	return animation;
 }
 
 }; // namespace

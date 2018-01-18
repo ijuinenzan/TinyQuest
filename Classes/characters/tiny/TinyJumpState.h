@@ -1,16 +1,16 @@
-﻿#ifndef __TINY_MOVE_RIGHT_STATE_H__
-#define __TINY_MOVE_RIGHT_STATE_H__
+﻿#ifndef __TINY_JUMP_STATE_H__
+#define __TINY_JUMP_STATE_H__
 #include "Tiny.h"
 
 namespace Tiny
 {
-	class TinyMoveRightState : public State
+	class TinyJumpState : public State
 	{
 	private:
 		Tiny*_tiny;
 	public:
-		TinyMoveRightState(Tiny* tiny);
-		virtual ~TinyMoveRightState();
+		TinyJumpState(Tiny* tiny);
+		virtual ~TinyJumpState();
 
 		void didEnterWithPreviousState(State* previousState) override;
 		void updateWithDeltaTime(const float delta) override;
@@ -20,4 +20,4 @@ namespace Tiny
 	};
 }
 
-#endif //!__TINY_MOVE_RIGHT_STATE_H__
+#endif //!__TINY_JUMP_STATE_H__

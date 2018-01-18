@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="11">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="33">
  <tileset firstgid="1" source="tiset.tsx"/>
  <layer name="GroundLayer" width="30" height="20">
   <data encoding="csv">
@@ -50,18 +50,38 @@
 </data>
  </layer>
  <objectgroup name="GroundObject">
-  <object id="7" x="1.33333" y="417.333">
-   <polygon points="0,0 -1.33333,220 957.333,221.333 958.667,-192 832,-192 830.667,93.3333 764,94.6667 766.667,-160 670.667,-160 669.333,93.3333 606.667,94.6667 608,-96 510.667,-94.6667 509.333,93.3333 445.333,93.3333 448,-65.3333 350.667,-64 349.333,94.6667 285.333,94.6667 286.667,-32 189.333,-33.3333 188,94.6667 124,93.3333 126.667,-1.33333"/>
-  </object>
+  <object id="12" x="0" y="418" width="125" height="222"/>
+  <object id="13" x="126" y="512" width="64" height="125"/>
+  <object id="14" x="191" y="384" width="98" height="251"/>
+  <object id="15" x="290" y="512" width="63" height="128"/>
+  <object id="16" x="352" y="353" width="93" height="287"/>
+  <object id="17" x="445" y="510" width="67" height="127"/>
+  <object id="18" x="511" y="320" width="98" height="319"/>
+  <object id="19" x="611" y="513" width="61" height="128"/>
+  <object id="20" x="671" y="257" width="90" height="379"/>
+  <object id="21" x="766" y="513" width="69" height="124"/>
+  <object id="22" x="833" y="222" width="125" height="413"/>
  </objectgroup>
  <objectgroup name="TrapObject">
-  <object id="1" x="128" y="480" width="62.6667" height="30.6667"/>
-  <object id="2" x="288" y="481.333" width="61.3333" height="30.6667"/>
-  <object id="4" x="446.667" y="480" width="64" height="29.3333"/>
-  <object id="5" x="608" y="480" width="60" height="32"/>
+  <object id="1" x="130" y="480" width="58.3031" height="30.6667"/>
+  <object id="2" x="290" y="479.878" width="61.3333" height="30.6667"/>
+  <object id="4" x="448.849" y="479.273" width="60.5455" height="29.3333"/>
   <object id="6" x="768" y="481.333" width="64" height="30.6667"/>
+  <object id="29" x="614" y="480" width="51.5" height="30"/>
+ </objectgroup>
+ <objectgroup name="CoinObject">
+  <object id="30" x="194" y="288" width="32" height="32"/>
+  <object id="31" x="449" y="258" width="32" height="32"/>
+  <object id="32" x="624" y="215" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="PlayerObject">
+  <object id="26" name="Player" x="37" y="384" width="24" height="28"/>
  </objectgroup>
  <objectgroup name="NextLevelObject">
-  <object id="10" x="954.667" y="5.33333" width="4" height="218.667"/>
+  <object id="28" x="952" y="0.8335" width="4" height="222.333">
+   <properties>
+    <property name="NextMapName" value="Maps/Level3.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
